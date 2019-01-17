@@ -27,17 +27,16 @@ const (
 	MessageTypeImage    MessageType = "image"
 	MessageTypeVideo    MessageType = "video"
 	MessageTypeAudio    MessageType = "audio"
-	MessageTypeFile     MessageType = "file"
 	MessageTypeLocation MessageType = "location"
 	MessageTypeSticker  MessageType = "sticker"
 	MessageTypeTemplate MessageType = "template"
 	MessageTypeImagemap MessageType = "imagemap"
-	MessageTypeFlex     MessageType = "flex"
 )
 
-// Message interface
+// Message inteface
 type Message interface {
-	Message()
+	json.Marshaler
+	message()
 }
 
 // TextMessage type
@@ -115,13 +114,6 @@ func (m *AudioMessage) MarshalJSON() ([]byte, error) {
 		OriginalContentURL: m.OriginalContentURL,
 		Duration:           m.Duration,
 	})
-}
-
-// FileMessage type
-type FileMessage struct {
-	ID       string
-	FileName string
-	FileSize int
 }
 
 // LocationMessage type
@@ -214,54 +206,15 @@ func (m *ImagemapMessage) MarshalJSON() ([]byte, error) {
 	})
 }
 
-// FlexMessage type
-type FlexMessage struct {
-	AltText  string
-	Contents FlexContainer
-}
-
-// MarshalJSON method of FlexMessage
-func (m *FlexMessage) MarshalJSON() ([]byte, error) {
-	return json.Marshal(&struct {
-		Type     MessageType `json:"type"`
-		AltText  string      `json:"altText"`
-		Contents interface{} `json:"contents"`
-	}{
-		Type:     MessageTypeFlex,
-		AltText:  m.AltText,
-		Contents: m.Contents,
-	})
-}
-
-// Message implements Message interface
-func (*FileMessage) Message() {}
-
-// Message implements Message interface
-func (*TextMessage) Message() {}
-
-// Message implements Message interface
-func (*ImageMessage) Message() {}
-
-// Message implements Message interface
-func (*VideoMessage) Message() {}
-
-// Message implements Message interface
-func (*AudioMessage) Message() {}
-
-// Message implements Message interface
-func (*LocationMessage) Message() {}
-
-// Message implements Message interface
-func (*StickerMessage) Message() {}
-
-// Message implements Message interface
-func (*TemplateMessage) Message() {}
-
-// Message implements Message interface
-func (*ImagemapMessage) Message() {}
-
-// Message implements Message interface
-func (*FlexMessage) Message() {}
+// implements Message interface
+func (*TextMessage) message()     {}
+func (*ImageMessage) message()    {}
+func (*VideoMessage) message()    {}
+func (*AudioMessage) message()    {}
+func (*LocationMessage) message() {}
+func (*StickerMessage) message()  {}
+func (*TemplateMessage) message() {}
+func (*ImagemapMessage) message() {}
 
 // NewTextMessage function
 func NewTextMessage(content string) *TextMessage {
@@ -327,13 +280,5 @@ func NewImagemapMessage(baseURL, altText string, baseSize ImagemapBaseSize, acti
 		AltText:  altText,
 		BaseSize: baseSize,
 		Actions:  actions,
-	}
-}
-
-// NewFlexMessage function
-func NewFlexMessage(altText string, contents FlexContainer) *FlexMessage {
-	return &FlexMessage{
-		AltText:  altText,
-		Contents: contents,
 	}
 }

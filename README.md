@@ -1,19 +1,18 @@
-LINE BotTemplate: A simple Golang LINE Bot Template for LINE Bot API
+LineBotTemplate: A simple Golang LineBot Template for Line Bot API
 ==============
 
 [![Join the chat at https://gitter.im/kkdai/LineBotTemplate](https://badges.gitter.im/kkdai/LineBotTemplate.svg)](https://gitter.im/kkdai/LineBotTemplate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
  [![GoDoc](https://godoc.org/github.com/kkdai/LineBotTemplate.svg?status.svg)](https://godoc.org/github.com/kkdai/LineBotTemplate)  [![Build Status](https://travis-ci.org/kkdai/LineBotTemplate.svg?branch=master)](https://travis-ci.org/kkdai/LineBotTemplate.svg)
 
-[![goreportcard.com](https://goreportcard.com/badge/github.com/kkdai/LineBotTemplate)](https://goreportcard.com/report/github.com/kkdai/LineBotTemplate)
 
 
 Installation and Usage
 =============
 
-### 1. Got A LINE Bot API devloper account
+### 1. Got A Line Bot API devloper account
 
-[Make sure you already registered](https://business.line.me/zh-hant/services/bot), if you need use LINE Bot.
+[Make sure you already registered](https://business.line.me/zh-hant/services/bot), if you need use Line Bot.
 
 ### 2. Just Deploy the same on Heroku
 
@@ -23,7 +22,7 @@ Remember your heroku, ID.
 
 <br><br>
 
-### 3. Go to LINE Bot Dashboard, setup basic API
+### 3. Go to Line Bot Dashboard, setup basic API
 
 Setup your basic account information. Here is some info you will need to know.
 
@@ -47,8 +46,8 @@ It all done.
 
 ### Video Tutorial:
 
-- [How to deploy LINE BotTemplate](https://www.youtube.com/watch?v=xpP51Kwuy2U)
-- [Hoe to modify your LINE BotTemplate code](https://www.youtube.com/watch?v=ckij73sIRik)
+- [How to deploy LineBotTemplate](https://www.youtube.com/watch?v=xpP51Kwuy2U)
+- [Hoe to modify your LineBotTemplate code](https://www.youtube.com/watch?v=ckij73sIRik)
 
 
 ### Chinese Tutorial:
